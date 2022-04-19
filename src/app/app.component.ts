@@ -4,7 +4,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ApiService } from './services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatColumnDef, MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +22,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit (): void {
     this.getAllProducts()
+    this.filterTable()
+  }
+// Filter table column by productName
+  filterTable() {
+    this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
+      return (
+        data.productName.toLocaleLowerCase().includes(filter)
+      )
+    }
   }
 
   title = 'firstProjectWithSCSS';
@@ -60,6 +69,14 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  applyFilterColumn(event: Event): void {
+    const filter = (event.target as HTMLInputElement).value.trim().toLocaleLowerCase();
+    this.dataSource.filter = filter;
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  } 
 
   editProduct(row: any) {
     this.dialog.open(DialogComponent, {
