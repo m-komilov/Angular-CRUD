@@ -1,0 +1,49 @@
+{
+  "productList": [
+    {
+      "productName": "Iphone2",
+      "category": "iPhone",
+      "condition": "New",
+      "price": "2000",
+      "comment": "ok",
+      "date": "2022-04-14T19:00:00.000Z",
+      "id": 1
+    },
+    {
+      "productName": "Samsung Ultra",
+      "category": "Samsung",
+      "condition": "New",
+      "price": "300",
+      "comment": "Yes",
+      "date": "2022-04-19T19:00:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "Redmi",
+      "category": "Redmi",
+      "condition": "Second Hand",
+      "price": "300",
+      "comment": "it is best",
+      "date": "2020-02-02T19:00:00.000Z",
+      "id": 4
+    },
+    {
+      "productName": "Iphone4",
+      "category": "iPhone",
+      "condition": "New",
+      "price": "1200",
+      "comment": "Best Ui ",
+      "date": "2022-04-05T19:00:00.000Z",
+      "id": 6
+    },
+    {
+      "productName": "Huawei",
+      "category": "Huawei",
+      "condition": "New",
+      "price": "600",
+      "comment": "Nice",
+      "date": "2022-04-05T19:00:00.000Z",
+      "id": 7
+    }
+  ]
+}
