@@ -1,7 +1,7 @@
 {
   "productList": [
     {
-      "productName": "Iphone2",
+      "productName": "Iphone S19",
       "category": "iPhone",
       "condition": "New",
       "price": "2000",
@@ -19,7 +19,7 @@
       "id": 2
     },
     {
-      "productName": "Redmi",
+      "productName": "Redmi Not 9 Pro",
       "category": "Redmi",
       "condition": "Second Hand",
       "price": "300",
@@ -37,13 +37,40 @@
       "id": 6
     },
     {
-      "productName": "Iphone X",
-      "category": "iPhone",
+      "productName": "Redmi",
+      "category": "Redmi",
+      "condition": "B/Y",
+      "price": "70",
+      "comment": "old version",
+      "date": "2016-03-08T19:00:00.000Z",
+      "id": 8
+    },
+    {
+      "productName": "Samsung",
+      "category": "Samsung",
+      "condition": "Second Hand",
+      "price": "450",
+      "comment": "eplasa bo'ladi",
+      "date": "2021-02-02T19:00:00.000Z",
+      "id": 9
+    },
+    {
+      "productName": "Redmi A 7",
+      "category": "Redmi",
+      "condition": "Second Hand",
+      "price": "150",
+      "comment": "old version",
+      "date": "2021-02-02T19:00:00.000Z",
+      "id": 10
+    },
+    {
+      "productName": "Samsung 20",
+      "category": "Samsung",
       "condition": "New",
-      "price": "1300",
-      "comment": "Best Phone",
-      "date": "2022-04-05T19:00:00.000Z",
-      "id": 7
+      "price": "205",
+      "comment": "",
+      "date": "2022-04-08T19:00:00.000Z",
+      "id": 11
     }
   ]
 }

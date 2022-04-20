@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ApiService } from './services/api.service';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatColumnDef, MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatColumnDef, MatTableDataSource } from '@angular/material/table';
+import { Product } from './Model/Product';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +13,18 @@ import {MatColumnDef, MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private dialog: MatDialog, private api: ApiService ){}
+  constructor(private dialog: MatDialog, private api: ApiService) { }
 
-  displayedColumns: string[] = [ 'id', 'productName', 'category', 'condition', 'price', 'comment', 'date', 'action'];
+  displayedColumns: string[] = ['id', 'productName', 'category', 'condition', 'price', 'comment', 'date', 'action'];
   dataSource!: MatTableDataSource<any>;
+  dataSourse2: Product[] = [];
+  dataSourse3: Product[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.getAllProducts()
-    this.filterTable()
-  }
-// Filter table column by productName
-  filterTable() {
-    this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
-      return (
-        data.productName.toLocaleLowerCase().includes(filter)
-      )
-    }
   }
 
   title = 'firstProjectWithSCSS';
@@ -38,7 +32,7 @@ export class AppComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: "30%"
     }).afterClosed().subscribe(res => {
-      if(res === "save"){
+      if (res === "save") {
         this.getAllProducts()
       }
     })
@@ -46,19 +40,11 @@ export class AppComponent implements OnInit {
 
   getAllProducts() {
     this.api.getProduct()
-    .subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res)
-        this.dataSource.paginator = this.paginator
-        this.dataSource.sort = this.sort
-
-      },
-
-      error: () => {
-        alert("Something want wrong while get product")
-      }
-      
-    })
+      .subscribe(
+        (respone) => {
+          this.dataSourse3=
+        this.dataSourse2=respone;
+        });
   }
 
   applyFilter(event: Event) {
@@ -69,14 +55,6 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  applyFilterColumn(event: Event): void {
-    const filter = (event.target as HTMLInputElement).value.trim().toLocaleLowerCase();
-    this.dataSource.filter = filter;
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  } 
 
   editProduct(row: any) {
     this.dialog.open(DialogComponent, {
@@ -89,7 +67,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  deleteProduct(id: number){
+  deleteProduct(id: number) {
     this.api.deleteProduct(id).subscribe({
       next: (res) => {
         alert("Product delete Sucsessfully")
@@ -101,4 +79,19 @@ export class AppComponent implements OnInit {
       }
     })
   }
+  
+  filter(filed: string, value: string) {
+console.log()
+    switch (filed) {
+      case 'productName': this.dataSourse3=this.dataSourse2.filter(x => x.productName.toLocaleLowerCase().includes(value));break;
+      case 'category': this.dataSourse3=this.dataSourse2.filter(x => x.category.includes(value));break;
+      case 'condition': this.dataSourse3=this.dataSourse2.filter(x => x.condition.toLocaleLowerCase().includes(value));break;
+      case 'price': this.dataSourse3=this.dataSourse2.filter(x => x.price.toLocaleString().includes(value));break;
+      case 'comment': this.dataSourse3=this.dataSourse2.filter(x => x.comment.toLocaleLowerCase().includes(value));break;
+      case 'date': this.dataSourse3=this.dataSourse2.filter(x => x.date.toLocaleLowerCase().includes(value));break;
+    }
+  }
+
+
+
 }

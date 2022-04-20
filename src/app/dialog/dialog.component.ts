@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Product } from '../Model/Product';
 
 @Component({
   selector: 'app-dialog',
@@ -19,7 +20,7 @@ export class DialogComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private api: ApiService, 
     private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public editData: any
+    @Inject(MAT_DIALOG_DATA) public editData: Product
     ) { }
 
   ngOnInit(): void {    
@@ -28,7 +29,7 @@ export class DialogComponent implements OnInit {
       category: ['', Validators.required],
       condition: ['', Validators.required],
       price: ['', Validators.required],
-      comment: ['', Validators.required],
+      comment: [''],
       date: ["", Validators.required]
     })
 
