@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(private dialog: MatDialog, private api: ApiService) { }
 
   displayedColumns: string[] = ['id', 'productName', 'category', 'condition', 'price', 'comment', 'date', 'action'];
-  dataSource!: MatTableDataSource<any>;
+  // is any
+  dataSource!: MatTableDataSource<Product>;
   dataSourse2: Product[] = [];
   dataSourse3: Product[] = [];
 
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts()
+    
   }
 
   title = 'firstProjectWithSCSS';
@@ -79,9 +81,10 @@ export class AppComponent implements OnInit {
       }
     })
   }
-  
+
   filter(filed: string, value: string) {
-console.log()
+    console.log(filed)
+    console.log(value)
     switch (filed) {
       case 'productName': this.dataSourse3=this.dataSourse2.filter(x => x.productName.toLocaleLowerCase().includes(value));break;
       case 'category': this.dataSourse3=this.dataSourse2.filter(x => x.category.includes(value));break;

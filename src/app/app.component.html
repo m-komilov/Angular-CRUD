@@ -11,16 +11,16 @@
 </mat-toolbar>
 
 
-<div class="container">
-  <mat-form-field appearance="standard">
+<div class="container"> 
+  <!-- <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
+  </mat-form-field>  -->
 
-  <!-- <mat-form-field appearance="fill">
+  <mat-form-field appearance="standard">
     <mat-label>Search</mat-label>
-    <input matInput placeholder="please enter a value" (input)="applyFilterColumn($event)">
-  </mat-form-field> -->
+    <input matInput placeholder="please enter a value" (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
 
   <div class="mat-elevation-z8">
 
@@ -28,7 +28,7 @@
     <mat-toolbar color="light">
 
       <!-- Product Name Filter Input -->
-      <mat-form-field class="example-productname" appearance="outline">
+      <mat-form-field id="left-out" class="example-productname" appearance="outline">
         <mat-label>Product Name</mat-label>
         <input matInput type="text" #productName (input)="filter('productName',productName.value)">
       </mat-form-field>
@@ -67,7 +67,7 @@
       </mat-form-field>
 
       <!-- Data Filter picker -->
-      <mat-form-field appearance="outline" class="example-category">
+      <mat-form-field appearance="outline" class="example-category" id="right-out">
         <mat-label>Choose a date</mat-label>
         <input matInput formControlName="date" [matDatepicker]="picker" type="text" #date (input)="filter('date',date.value)" >   
          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
